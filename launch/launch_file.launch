@@ -1,0 +1,14 @@
+<launch>
+  <!-- Tag for launching TurtleBot in gazebo -->  
+  <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+  </include>
+
+  <!-- Tags of cleaner node -->
+  <node
+    pkg="vacuum_cleaner"
+    type="cleaner"
+    name="cleaner"
+    output="screen"
+    launch-prefix="gnome-terminal --command"
+  />
+</launch>
