@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   move_base_msgs
   roscpp
   sensor_msgs
+  std_msgs
+  message_generation
+  rospy
 )
 
 ## System dependencies are found with CMake's conventions
@@ -74,6 +77,7 @@ find_package(catkin REQUIRED COMPONENTS
 #    geometry_msgs
 #    move_base_msgs
 #    sensor_msgs
+#    std_msgs
 #  )
 
 ################################################
@@ -146,7 +150,7 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(cleaner vacuum_cleaner_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(cleaner
@@ -193,10 +197,25 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_vacuum_cleaner.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(
+    cleanerTest 
+    test/cleanerTest.launch 
+    test/main.cpp 
+    test/cleanerTest.cpp
+    src/cleaner.cpp
+  )
 
-## Add folders to be run by python nosetests
-# catkin_add_nosetests(test)
+  target_link_libraries(
+    cleanerTest 
+    ${catkin_LIBRARIES}
+  )
+
+  add_dependencies(
+    cleanerTest 
+    cleaner 
+    #vacuum_cleaner_generate_messages_cpp
+    ${catkin_EXPORTED_TARGETS}
+  )
+endif()
