@@ -107,7 +107,7 @@ void Cleaner::clean() {
    * is the number of messages that will be buffered up before beginning to throw
    * away the oldest ones.
    */
-  sub = n.subscribe <sensor_msgs::LaserScan> ("/scan", 1000, &Cleaner::sensorCallback, this);
+  sub = n.subscribe <sensor_msgs::LaserScan> ("/scan", 300, &Cleaner::sensorCallback, this);
 
   ros::Rate loop_rate(10);
 
@@ -122,7 +122,7 @@ void Cleaner::clean() {
       // No collision
       msg.angular.z = 0.0;
       msg.linear.x = speedX;
-      ROS_INFO("No collision");
+      ROS_INFO("No collision: ");
     }
 
     /**
