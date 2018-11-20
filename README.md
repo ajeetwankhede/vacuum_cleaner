@@ -13,7 +13,9 @@ This project implements a simple walker algorithm for a vacuum cleaner robot wit
 sudo apt-get install ros-kinetic-catkin
 ```
 3. Package Dependencies
+
  a. roscpp
+ 
  b. turtlebot simulation stack - to install turtlebot run the following command
  ```
  sudo apt-get install ros-kinetic-turtlebot-gazebo ros-kinetic-turtlebot-apps ros-kinetic-turtlebot-rviz-launchers
