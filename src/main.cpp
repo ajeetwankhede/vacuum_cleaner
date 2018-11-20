@@ -53,6 +53,5 @@ int main(int argc, char **argv) {
   Cleaner cleaner;
   // Call the clean function
   cleaner.clean();
-  
   return 0;
 }
