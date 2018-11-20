@@ -107,7 +107,7 @@ void Cleaner::clean() {
    * is the number of messages that will be buffered up before beginning to throw
    * away the oldest ones.
    */
-  sub = n.subscribe <sensor_msgs::LaserScan> ("/scan", 300, &Cleaner::sensorCallback, this);
+  sub= n.subscribe <sensor_msgs::LaserScan> ("/scan", 300, &Cleaner::sensorCallback, this);
 
   ros::Rate loop_rate(10);
 
