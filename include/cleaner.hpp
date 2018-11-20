@@ -73,14 +73,13 @@ class Cleaner {
    *   @return none
    */
   void clean();
-
+  bool obstacle;
  private:
   geometry_msgs::Twist msg;
   ros::NodeHandle n;
   ros::Publisher velocity_pub;
   ros::Subscriber sub;
   float speedX, rotateZ;
-  bool obstacle;
 };
 
 #endif  // INCLUDE_CLEANER_HPP_
