@@ -74,6 +74,7 @@ class Cleaner {
    */
   void clean();
   bool obstacle;
+
  private:
   geometry_msgs::Twist msg;
   ros::NodeHandle n;
