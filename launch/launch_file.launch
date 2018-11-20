@@ -1,4 +1,10 @@
 <launch>
+  <!-- Tag for record argument -->
+  <arg 
+    name = "record" 
+    default = "false" 
+  />
+
   <!-- Tag for launching TurtleBot in gazebo -->  
   <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
   </include>
@@ -10,5 +16,14 @@
     name="cleaner"
     output="screen"
     launch-prefix="gnome-terminal --command"
+  />
+
+  <!-- Tags of rosbag node -->
+  <node
+    pkg="rosbag"
+    type="record"
+    name="record"
+    args = "-a -O $(find vacuum_cleaner)/results/recordedData.bag -x /camera/(.*) --duration=30"
+    if = "$(arg record)"
   />
 </launch>
