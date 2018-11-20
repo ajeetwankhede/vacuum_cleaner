@@ -90,7 +90,8 @@ void Cleaner::clean() {
    * than we can send them, the number here specifies how many messages to
    * buffer up before throwing some away.
    */
-  ros::Publisher velocity_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel_mux/input/navi", 1000);
+  ros::Publisher velocity_pub = n.advertise<geometry_msgs::Twist>
+                                ("/cmd_vel_mux/input/navi", 1000);
 
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
@@ -107,7 +108,8 @@ void Cleaner::clean() {
    * is the number of messages that will be buffered up before beginning to throw
    * away the oldest ones.
    */
-  sub= n.subscribe <sensor_msgs::LaserScan> ("/scan", 300, &Cleaner::sensorCallback, this);
+  sub = n.subscribe <sensor_msgs::LaserScan>
+       ("/scan", 300, &Cleaner::sensorCallback, this);
 
   ros::Rate loop_rate(10);
 
