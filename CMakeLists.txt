@@ -191,31 +191,3 @@ include_directories(
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
-
-#############
-## Testing ##
-#############
-
-## Add gtest based cpp test target and link libraries
-if(CATKIN_ENABLE_TESTING)
-  find_package(rostest REQUIRED)
-  add_rostest_gtest(
-    cleanerTest 
-    test/cleanerTest.launch 
-    test/main.cpp 
-    test/cleanerTest.cpp
-    src/cleaner.cpp
-  )
-
-  target_link_libraries(
-    cleanerTest 
-    ${catkin_LIBRARIES}
-  )
-
-  add_dependencies(
-    cleanerTest 
-    cleaner 
-    #vacuum_cleaner_generate_messages_cpp
-    ${catkin_EXPORTED_TARGETS}
-  )
-endif()
